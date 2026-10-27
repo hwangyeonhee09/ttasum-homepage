@@ -1,0 +1,58 @@
+backend:
+  name: git-gateway
+  branch: main
+
+locale: ko
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+publish: true
+
+collections:
+  - name: "ttasum_content"
+    label: "따숨 기록장"
+    files:
+      - name: "gallery"
+        label: "작품 갤러리"
+        file: "content/gallery.json"
+        format: "json"
+        fields:
+          - label: "작품 목록"
+            name: "entries"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "작품 이름", name: "title", widget: "string" }
+              - { label: "제작 날짜", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+              - { label: "작품 사진", name: "image", widget: "image", required: false }
+              - { label: "작품 설명", name: "description", widget: "text", required: false }
+              - { label: "공개하기", name: "published", widget: "boolean", default: true }
+      - name: "journal"
+        label: "바느질 일기"
+        file: "content/journal.json"
+        format: "json"
+        fields:
+          - label: "일기 목록"
+            name: "entries"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "제목", name: "title", widget: "string" }
+              - { label: "날짜", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+              - { label: "사진", name: "image", widget: "image", required: false }
+              - { label: "일기 내용", name: "description", widget: "text" }
+              - { label: "공개하기", name: "published", widget: "boolean", default: true }
+      - name: "machine"
+        label: "재봉틀 이야기"
+        file: "content/machine.json"
+        format: "json"
+        fields:
+          - label: "재봉틀 기록 목록"
+            name: "entries"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "제목", name: "title", widget: "string" }
+              - { label: "날짜", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+              - { label: "사진", name: "image", widget: "image", required: false }
+              - { label: "기록 내용", name: "description", widget: "text" }
+              - { label: "공개하기", name: "published", widget: "boolean", default: true }
